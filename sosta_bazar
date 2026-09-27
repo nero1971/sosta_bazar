@@ -1,0 +1,1811 @@
+<!DOCTYPE html>
+<html lang="bn" class="overflow-x-hidden">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>সস্তা বাজার — সেরা দামে আসল পণ্য</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <!-- Google Fonts: Hind Siliguri -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      font-family: 'Hind Siliguri', sans-serif;
+    }
+    html, body {
+      overflow-x: hidden !important;
+      max-width: 100vw !important;
+      width: 100% !important;
+      margin: 0;
+      padding: 0;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 4px;
+      height: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #090d16;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 4px;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    @keyframes slideIn {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    .animate-slideIn {
+      animation: slideIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    /* SVG Icon Helper Style */
+    .icon {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      stroke-width: 0;
+      stroke: currentColor;
+      fill: currentColor;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body class="bg-[#0b0f19] text-slate-100 min-h-screen relative selection:bg-emerald-500 selection:text-white pb-24 md:pb-10 w-full overflow-x-hidden">
+
+  <!-- ========================================== -->
+  <!-- INLINE SVG SYMBOLS (100% BULLETPROOF ICONS) -->
+  <!-- ========================================== -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <!-- Basket / Bag Logo -->
+    <symbol id="icon-basket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <path d="M16 10a4 4 0 0 1-8 0"></path>
+    </symbol>
+
+    <!-- Cart Shopping -->
+    <symbol id="icon-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="9" cy="21" r="1"></circle>
+      <circle cx="20" cy="21" r="1"></circle>
+      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+    </symbol>
+
+    <!-- Heart Outline -->
+    <symbol id="icon-heart-outline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+    </symbol>
+
+    <!-- Heart Filled -->
+    <symbol id="icon-heart-fill" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+    </symbol>
+
+    <!-- User / Profile -->
+    <symbol id="icon-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+      <circle cx="12" cy="7" r="4"></circle>
+    </symbol>
+
+    <!-- Search Magnifying Glass -->
+    <symbol id="icon-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="8"></circle>
+      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+    </symbol>
+
+    <!-- Package / Box (Orders) -->
+    <symbol id="icon-box" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+      <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+      <line x1="12" y1="22.08" x2="12" y2="12"></line>
+    </symbol>
+
+    <!-- Home -->
+    <symbol id="icon-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+      <polyline points="9 22 9 12 15 12 15 22"></polyline>
+    </symbol>
+
+    <!-- Bolt / Lightning (Buy Now) -->
+    <symbol id="icon-bolt" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+    </symbol>
+
+    <!-- Eye (Details) -->
+    <symbol id="icon-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+      <circle cx="12" cy="12" r="3"></circle>
+    </symbol>
+
+    <!-- Star -->
+    <symbol id="icon-star" viewBox="0 0 24 24" fill="currentColor">
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+    </symbol>
+
+    <!-- Cross / Close (X) -->
+    <symbol id="icon-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </symbol>
+
+    <!-- Ticket / Coupon -->
+    <symbol id="icon-ticket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M2 9a3 3 0 0 1 0 6v5a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a3 3 0 0 1 0-6V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"></path>
+      <line x1="13" y1="3" x2="13" y2="21" stroke-dasharray="2 2"></line>
+    </symbol>
+
+    <!-- Phone -->
+    <symbol id="icon-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+    </symbol>
+
+    <!-- Trash / Delete -->
+    <symbol id="icon-trash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="3 6 5 6 21 6"></polyline>
+      <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+    </symbol>
+
+    <!-- Copy -->
+    <symbol id="icon-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+    </symbol>
+
+    <!-- Chevron Left -->
+    <symbol id="icon-chevron-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="15 18 9 12 15 6"></polyline>
+    </symbol>
+
+    <!-- Chevron Right -->
+    <symbol id="icon-chevron-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </symbol>
+
+    <!-- Category: Grocery Basket -->
+    <symbol id="icon-cat-grocery" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <path d="M16 10a4 4 0 0 1-8 0"></path>
+    </symbol>
+
+    <!-- Category: Gadgets -->
+    <symbol id="icon-cat-gadget" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+      <line x1="12" y1="18" x2="12.01" y2="18"></line>
+    </symbol>
+
+    <!-- Category: Fashion -->
+    <symbol id="icon-cat-fashion" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.5a2 2 0 0 0 1.94 1.67H7v10a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V10.86h2.2a2 2 0 0 0 1.94-1.67l.58-3.5a2 2 0 0 0-1.34-2.23z"></path>
+    </symbol>
+  </svg>
+
+  <!-- Toast Notification Box -->
+  <div id="toastBox" class="fixed top-4 right-3 left-3 sm:left-auto sm:right-4 z-[9999] flex flex-col gap-2 max-w-sm pointer-events-none"></div>
+
+  <!-- 1. Top Notice Announcement Bar -->
+  <div id="userNoticeBar" class="bg-gradient-to-r from-emerald-800 via-teal-700 to-emerald-900 text-white text-xs py-1.5 px-3 sm:px-4 shadow-sm sticky top-0 z-50 w-full">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-2">
+      <div class="flex items-center gap-1.5 min-w-0 flex-1 overflow-hidden">
+        <span class="flex h-2 w-2 relative shrink-0">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-300"></span>
+        </span>
+        <span id="noticeText" class="font-bold text-[11px] sm:text-xs truncate">
+          সস্তা বাজারে স্বাগতম! সারা দেশে দ্রুত হোম ডেলিভারি ও বিশেষ ছাড়।
+        </span>
+      </div>
+      <div class="flex items-center gap-1.5 shrink-0">
+        <button onclick="applyHeroCoupon()" class="px-2 py-0.5 rounded-lg bg-emerald-950/80 hover:bg-emerald-900 border border-emerald-500/40 text-amber-300 font-mono font-bold text-[10px] sm:text-[11px] transition flex items-center gap-1">
+          <svg class="w-3 h-3 text-amber-300"><use href="#icon-ticket"></use></svg>
+          <span id="topCouponTag">SASTA2026</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Store Header (Fully Responsive - Pristine SVG Icons) -->
+  <header class="sticky top-8 z-40 bg-[#0d1322]/95 backdrop-blur-md border-b border-slate-800/80 px-3 sm:px-6 py-2.5 sm:py-3 shadow-md w-full">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-2">
+      
+      <!-- Brand Logo (Clean Vector SVG, never broken) -->
+      <div class="flex items-center gap-2 cursor-pointer select-none shrink-0" onclick="filterUserCategory('all')">
+        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-400 flex items-center justify-center text-white shadow-md shadow-emerald-500/20 shrink-0">
+          <svg class="w-5 h-5 text-white"><use href="#icon-basket"></use></svg>
+        </div>
+        <div>
+          <h1 class="text-base sm:text-lg font-black text-white leading-tight">
+            সস্তা<span class="text-emerald-400">বাজার</span>
+          </h1>
+          <p class="text-[9px] text-slate-400 font-bold uppercase tracking-wider hidden sm:block">সেরা দামে সেরা পণ্য</p>
+        </div>
+      </div>
+
+      <!-- Desktop Search Bar -->
+      <div class="hidden md:flex flex-1 max-w-md mx-4 relative">
+        <input 
+          type="text" 
+          id="userSearchInput" 
+          oninput="renderUserProducts()" 
+          placeholder="মুদি বাজার, স্মার্ট গ্যাজেট, পোশাক খুঁজুন..." 
+          class="w-full pl-9 pr-8 py-2 bg-slate-800/90 border border-slate-700/80 rounded-full text-xs text-white placeholder-slate-400 focus:outline-none focus:border-emerald-500 transition" 
+        />
+        <svg class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2"><use href="#icon-search"></use></svg>
+        <button id="clearSearchBtn" onclick="clearSearch()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white">
+          <svg class="w-3.5 h-3.5"><use href="#icon-x"></use></svg>
+        </button>
+      </div>
+
+      <!-- Header Action Buttons -->
+      <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+        
+        <!-- Wishlist Button -->
+        <button onclick="openWishlistModal()" class="relative p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-rose-400 text-xs font-bold transition flex items-center border border-slate-700/70" title="পছন্দের তালিকা">
+          <svg class="w-4 h-4 text-rose-400"><use href="#icon-heart-outline"></use></svg>
+          <span id="wishlistBadgeCount" class="hidden absolute -top-1 -right-1 w-4 h-4 bg-rose-500 text-white text-[9px] font-black rounded-full flex items-center justify-center">0</span>
+        </button>
+
+        <!-- Orders Button (Desktop only) -->
+        <button onclick="openMyOrdersModal()" class="hidden sm:flex relative px-2.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold transition items-center gap-1.5 border border-slate-700/70" title="আমার অর্ডারসমূহ">
+          <svg class="w-4 h-4 text-emerald-400"><use href="#icon-box"></use></svg>
+          <span>অর্ডার</span>
+          <span id="ordersBadgeCount" class="hidden absolute -top-1 -right-1 w-4 h-4 bg-emerald-500 text-white text-[9px] font-black rounded-full flex items-center justify-center">0</span>
+        </button>
+
+        <!-- Cart Button -->
+        <button onclick="openCartDrawer()" class="relative px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-md shadow-emerald-600/30">
+          <svg class="w-4 h-4 text-white"><use href="#icon-cart"></use></svg>
+          <span class="hidden sm:inline">কার্ট</span>
+          <span id="cartBadgeCount" class="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-amber-400 text-slate-950 flex items-center justify-center text-[10px] sm:text-[11px] font-black">0</span>
+        </button>
+
+        <!-- Profile Button -->
+        <button onclick="openProfileModal()" class="p-1.5 sm:px-2.5 sm:py-1.5 rounded-xl sm:rounded-full bg-slate-800 hover:bg-slate-700 border border-slate-700/70 text-slate-200 text-xs font-bold transition flex items-center gap-1.5" title="আমার প্রোফাইল ও আইডি">
+          <div class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs shrink-0">
+            <svg class="w-3.5 h-3.5 text-emerald-400"><use href="#icon-user"></use></svg>
+          </div>
+          <span id="headerProfileName" class="hidden md:inline text-xs">প্রোফাইল</span>
+        </button>
+
+      </div>
+
+    </div>
+
+    <!-- Mobile Search Bar -->
+    <div class="mt-2 md:hidden relative w-full">
+      <input 
+        type="text" 
+        id="userSearchInputMobile" 
+        oninput="renderUserProducts()" 
+        placeholder="মুদি, গ্যাজেট বা পণ্য খুঁজুন..." 
+        class="w-full pl-8 pr-8 py-1.5 bg-slate-800/90 border border-slate-700/80 rounded-xl text-xs text-white placeholder-slate-400 focus:outline-none focus:border-emerald-500" 
+      />
+      <svg class="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-1/2 -translate-y-1/2"><use href="#icon-search"></use></svg>
+    </div>
+  </header>
+
+  <!-- 3. Hero Promotional Banner -->
+  <section class="max-w-7xl mx-auto px-3 sm:px-6 pt-3 sm:pt-5 w-full">
+    <div class="relative overflow-hidden rounded-2xl sm:rounded-3xl bg-gradient-to-r from-emerald-950/90 via-slate-900 to-teal-950/90 border border-emerald-800/30 p-4 sm:p-7 md:p-8 shadow-xl">
+      <div class="max-w-xl space-y-2 sm:space-y-3 relative z-10">
+        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-amber-400 text-slate-950 inline-block shadow-xs">
+          🔥 মেগা ডিসকাউন্ট অফার ২০২৬
+        </span>
+        <h2 class="text-lg sm:text-2xl md:text-3xl font-black text-white leading-snug">
+          প্রতিদিনের বাজার, <span class="text-emerald-400">এখন সবচেয়ে সস্তায়!</span>
+        </h2>
+        <p class="text-[11px] sm:text-xs text-slate-300 line-clamp-2">
+          ১০০% আসল পণ্য, দ্রুততম হোম ডেলিভারি ও সহজ ক্যাশ অন ডেলিভারি সুবিধা।
+        </p>
+        <div class="pt-1 flex flex-wrap items-center gap-2">
+          <div class="px-2.5 py-1 rounded-xl bg-slate-800/90 border border-slate-700/80 text-[11px] text-slate-300 flex items-center gap-1.5">
+            <span>কুপন:</span>
+            <strong id="heroCouponCode" class="text-amber-300 font-mono font-bold">SASTA2026</strong>
+            <button onclick="applyHeroCoupon()" class="px-1.5 py-0.5 bg-emerald-600 hover:bg-emerald-500 text-white text-[9px] font-bold rounded">
+              প্রয়োগ
+            </button>
+          </div>
+          <button onclick="document.getElementById('productsSection').scrollIntoView({ behavior: 'smooth' })" class="px-3 py-1 bg-emerald-600 hover:bg-emerald-500 text-white text-[11px] font-bold rounded-xl transition shadow-xs flex items-center gap-1">
+            <svg class="w-3.5 h-3.5 text-white"><use href="#icon-basket"></use></svg>
+            <span>কিনুন &darr;</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Category Filter & Sorting -->
+  <section class="max-w-7xl mx-auto px-3 sm:px-6 pt-4 sm:pt-6 w-full">
+    <div class="flex items-center justify-between gap-2 mb-2.5">
+      <div class="flex items-center gap-1.5">
+        <h3 class="text-sm sm:text-base font-black text-white">পণ্য বিভাগসমূহ</h3>
+      </div>
+      <div class="flex items-center gap-1 bg-slate-800/90 px-2 py-1 rounded-xl border border-slate-700/80">
+        <span class="text-[10px] text-slate-400 font-bold hidden sm:inline">সাজান:</span>
+        <select id="sortOption" onchange="renderUserProducts()" class="bg-transparent text-[11px] font-bold text-white focus:outline-none cursor-pointer">
+          <option value="default" class="bg-slate-900">ডিফল্ট</option>
+          <option value="low-to-high" class="bg-slate-900">মূল্য: কম-বেশি</option>
+          <option value="high-to-low" class="bg-slate-900">মূল্য: বেশি-কম</option>
+          <option value="rating" class="bg-slate-900">সর্বোচ্চ রেটিং</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Category Pills -->
+    <div class="flex items-center gap-1.5 overflow-x-auto pb-1.5 no-scrollbar text-xs font-bold w-full">
+      <button onclick="filterUserCategory('all')" class="cat-pill px-3 py-1.5 rounded-xl bg-emerald-600 text-white transition shrink-0 text-xs" data-cat="all">
+        সকল পণ্য
+      </button>
+      <button onclick="filterUserCategory('groceries')" class="cat-pill px-3 py-1.5 rounded-xl bg-slate-800 text-slate-300 hover:text-white transition shrink-0 text-xs" data-cat="groceries">
+        <svg class="w-3.5 h-3.5 text-orange-400 mr-1 inline"><use href="#icon-cat-grocery"></use></svg> মুদি ও বাজার
+      </button>
+      <button onclick="filterUserCategory('gadgets')" class="cat-pill px-3 py-1.5 rounded-xl bg-slate-800 text-slate-300 hover:text-white transition shrink-0 text-xs" data-cat="gadgets">
+        <svg class="w-3.5 h-3.5 text-blue-400 mr-1 inline"><use href="#icon-cat-gadget"></use></svg> স্মার্ট গ্যাজেট
+      </button>
+      <button onclick="filterUserCategory('fashion')" class="cat-pill px-3 py-1.5 rounded-xl bg-slate-800 text-slate-300 hover:text-white transition shrink-0 text-xs" data-cat="fashion">
+        <svg class="w-3.5 h-3.5 text-rose-400 mr-1 inline"><use href="#icon-cat-fashion"></use></svg> ফ্যাশন
+      </button>
+      <button onclick="filterUserCategory('home')" class="cat-pill px-3 py-1.5 rounded-xl bg-slate-800 text-slate-300 hover:text-white transition shrink-0 text-xs" data-cat="home">
+        হোম অ্যাপ্লায়েন্স
+      </button>
+      <button onclick="filterUserCategory('audio')" class="cat-pill px-3 py-1.5 rounded-xl bg-slate-800 text-slate-300 hover:text-white transition shrink-0 text-xs" data-cat="audio">
+        সাউন্ড ও অডিও
+      </button>
+      <button onclick="filterUserCategory('furniture')" class="cat-pill px-3 py-1.5 rounded-xl bg-slate-800 text-slate-300 hover:text-white transition shrink-0 text-xs" data-cat="furniture">
+        আসবাবপত্র
+      </button>
+    </div>
+  </section>
+
+  <!-- 5. Products Grid -->
+  <section id="productsSection" class="max-w-7xl mx-auto px-3 sm:px-6 py-4 sm:py-6 w-full">
+    <div class="flex items-center justify-between mb-3">
+      <h3 class="text-sm sm:text-base font-black text-white flex items-center gap-1.5">
+        <span>সকল পণ্যসম্ভার</span>
+      </h3>
+      <span id="userProductsCountText" class="text-[11px] text-slate-400">০টি পণ্য পাওয়া গেছে</span>
+    </div>
+
+    <div id="userProductsGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2.5 sm:gap-4 w-full">
+      <div class="col-span-full py-16 text-center text-slate-500">
+        <div class="w-8 h-8 border-3 border-emerald-500 border-t-transparent rounded-full animate-spin mx-auto mb-2"></div>
+        <p class="text-xs">পণ্য লোড হচ্ছে...</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Footer -->
+  <footer class="mt-8 bg-[#090d16] border-t border-slate-800/80 py-6 px-4 text-center text-xs text-slate-400 w-full">
+    <div class="max-w-7xl mx-auto space-y-2">
+      <div class="flex items-center justify-center gap-3">
+        <button onclick="openMyOrdersModal()" class="hover:text-emerald-400 font-bold">অর্ডার ট্র্যাকিং</button>
+        <span>•</span>
+        <button onclick="openProfileModal()" class="hover:text-emerald-400 font-bold">আমার প্রোফাইল</button>
+        <span>•</span>
+        <button onclick="openWishlistModal()" class="hover:text-rose-400 font-bold">পছন্দের তালিকা</button>
+      </div>
+      <p class="font-bold text-slate-300">&copy; ২০২৬ সস্তা বাজার। সর্বস্বত্ব সংরক্ষিত।</p>
+      <p class="text-slate-500 text-[10px]">Firebase Cloud Firestore ডেটাবেসের সাথে সংযুক্ত।</p>
+    </div>
+  </footer>
+
+  <!-- ================================================================= -->
+  <!-- MOBILE BOTTOM NAVIGATION (PERFECT 100% SVG ICONS) -->
+  <!-- ================================================================= -->
+  <nav class="fixed bottom-0 left-0 right-0 z-50 bg-[#0d1322]/95 backdrop-blur-xl border-t border-slate-800 md:hidden flex items-center justify-around py-1.5 shadow-2xl w-full">
+    
+    <!-- Home Tab -->
+    <button onclick="filterUserCategory('all'); window.scrollTo({ top: 0, behavior: 'smooth' });" class="flex flex-col items-center justify-center flex-1 text-emerald-400 py-1">
+      <svg class="w-5 h-5 text-emerald-400 mb-0.5"><use href="#icon-home"></use></svg>
+      <span class="text-[10px] font-bold">হোম</span>
+    </button>
+
+    <!-- Wishlist Tab -->
+    <button onclick="openWishlistModal()" class="flex flex-col items-center justify-center flex-1 text-slate-400 hover:text-rose-400 py-1 relative">
+      <svg class="w-5 h-5 text-slate-400 hover:text-rose-400 mb-0.5"><use href="#icon-heart-outline"></use></svg>
+      <span class="text-[10px] font-bold">পছন্দ</span>
+      <span id="bottomWishlistBadge" class="hidden absolute top-0.5 right-4 w-3.5 h-3.5 bg-rose-500 text-white text-[8px] font-bold rounded-full flex items-center justify-center">0</span>
+    </button>
+
+    <!-- Center Floating Cart Button -->
+    <div class="flex items-center justify-center flex-1">
+      <button onclick="openCartDrawer()" class="flex items-center justify-center w-12 h-12 bg-emerald-600 hover:bg-emerald-500 text-white rounded-full shadow-lg shadow-emerald-600/40 -translate-y-4 border-3 border-[#0b0f19] transition active:scale-95 relative">
+        <svg class="w-6 h-6 text-white"><use href="#icon-basket"></use></svg>
+        <span id="bottomCartBadge" class="hidden absolute -top-1 -right-1 w-4 h-4 bg-amber-400 text-slate-950 text-[9px] font-black rounded-full flex items-center justify-center border border-[#0b0f19]">0</span>
+      </button>
+    </div>
+
+    <!-- Orders Tab -->
+    <button onclick="openMyOrdersModal()" class="flex flex-col items-center justify-center flex-1 text-slate-400 hover:text-emerald-400 py-1 relative">
+      <svg class="w-5 h-5 text-slate-400 hover:text-emerald-400 mb-0.5"><use href="#icon-box"></use></svg>
+      <span class="text-[10px] font-bold">অর্ডার</span>
+      <span id="bottomOrdersBadge" class="hidden absolute top-0.5 right-4 w-3.5 h-3.5 bg-emerald-500 text-white text-[8px] font-bold rounded-full flex items-center justify-center">0</span>
+    </button>
+
+    <!-- Profile Tab -->
+    <button onclick="openProfileModal()" class="flex flex-col items-center justify-center flex-1 text-slate-400 hover:text-emerald-400 py-1">
+      <svg class="w-5 h-5 text-slate-400 hover:text-emerald-400 mb-0.5"><use href="#icon-user"></use></svg>
+      <span class="text-[10px] font-bold">প্রোফাইল</span>
+    </button>
+
+  </nav>
+
+  <!-- ================================================================= -->
+  <!-- MODALS & DRAWERS -->
+  <!-- ================================================================= -->
+
+  <!-- A. Cart Drawer & Checkout -->
+  <div id="cartDrawer" class="hidden fixed inset-0 z-50 overflow-hidden bg-slate-950/80 backdrop-blur-xs flex justify-end">
+    <div class="w-full max-w-md bg-[#0d1322] border-l border-slate-800 h-full flex flex-col p-4 shadow-2xl overflow-y-auto custom-scrollbar">
+      
+      <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+        <h3 class="text-sm sm:text-base font-black text-white flex items-center gap-2">
+          <svg class="w-4 h-4 text-emerald-400"><use href="#icon-cart"></use></svg>
+          <span>আপনার শপিং কার্ট</span>
+        </h3>
+        <button onclick="closeCartDrawer()" class="w-7 h-7 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center">
+          <svg class="w-4 h-4"><use href="#icon-x"></use></svg>
+        </button>
+      </div>
+
+      <!-- Cart Items List -->
+      <div id="cartItemsContainer" class="my-3 space-y-2.5 flex-1 overflow-y-auto custom-scrollbar"></div>
+
+      <!-- Checkout Form Section -->
+      <div id="checkoutSection" class="pt-3 border-t border-slate-800 space-y-3 text-xs">
+        
+        <!-- Summary calculation box -->
+        <div class="space-y-1.5 p-3 bg-slate-800/80 rounded-2xl border border-slate-700/80">
+          <div class="flex justify-between text-slate-400">
+            <span>পণ্যের সাবটোটাল:</span>
+            <span id="cartSubtotal" class="font-bold text-white">৳০</span>
+          </div>
+          <div class="flex justify-between text-slate-400">
+            <span>ডেলিভারি চার্জ:</span>
+            <span id="cartDeliveryFeeDisplay" class="font-bold text-emerald-400">৳৬০</span>
+          </div>
+          <div id="cartDiscountRow" class="hidden flex justify-between text-emerald-400 font-bold">
+            <span>কুপন ডিসকাউন্ট:</span>
+            <span id="cartDiscountDisplay">-৳০</span>
+          </div>
+          <div class="flex justify-between text-sm font-black text-white pt-2 border-t border-slate-700">
+            <span>সর্বমোট পরিশোধযোগ্য:</span>
+            <span id="cartGrandTotal" class="text-emerald-400">৳০</span>
+          </div>
+        </div>
+
+        <!-- Coupon Apply / Remove Section -->
+        <div class="p-2.5 bg-slate-800/80 rounded-2xl border border-slate-700/80 space-y-1.5">
+          <div class="flex items-center justify-between">
+            <span class="text-[11px] font-bold text-slate-300">কুপন কোড:</span>
+            <div id="appliedCouponBadge" class="hidden flex items-center gap-1.5">
+              <span id="appliedCouponText" class="px-2 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 font-mono font-bold text-[10px] border border-emerald-500/40"></span>
+              <button onclick="removeCoupon()" class="text-rose-400 hover:text-rose-300 text-[10px] font-bold underline">বাদ দিন</button>
+            </div>
+          </div>
+          <div id="couponInputRow" class="flex gap-1.5">
+            <input type="text" id="couponInput" placeholder="যেমন: SASTA2026" class="flex-1 px-2.5 py-1.5 bg-slate-900 border border-slate-700 rounded-xl text-white text-xs font-mono uppercase focus:outline-none focus:border-emerald-500" />
+            <button onclick="applyCouponFromInput()" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl text-xs transition">প্রয়োগ</button>
+          </div>
+        </div>
+
+        <!-- Customer Checkout Form -->
+        <form id="checkoutForm" onsubmit="handlePlaceOrder(event)" class="space-y-2.5">
+          <div>
+            <label class="block text-[11px] font-bold text-slate-300 mb-1">আপনার পূর্ণ নাম *</label>
+            <input type="text" id="custName" required placeholder="মোঃ সাব্বির আহমেদ" class="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded-xl text-white text-xs focus:outline-none focus:border-emerald-500" />
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-bold text-slate-300 mb-1">মোবাইল নম্বর *</label>
+            <input type="tel" id="custPhone" required pattern="01[3-9][0-9]{8}" placeholder="017XXXXXXXX" class="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded-xl text-white text-xs focus:outline-none focus:border-emerald-500" />
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-bold text-slate-300 mb-1">সম্পূর্ণ ডেলিভারি ঠিকানা *</label>
+            <textarea id="custAddress" required rows="2" placeholder="বাড়ি/রোড, এলাকা, থানা, জেলা..." class="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded-xl text-white text-xs focus:outline-none focus:border-emerald-500"></textarea>
+          </div>
+
+          <!-- 3 Delivery Zones Selector -->
+          <div>
+            <label class="block text-[11px] font-bold text-slate-300 mb-1">ডেলিভারি এলাকা:</label>
+            <div class="grid grid-cols-3 gap-1 text-center">
+              <button type="button" onclick="setDeliveryZone('inside')" id="btnZoneIn" class="p-1.5 rounded-xl border border-emerald-500 bg-emerald-500/20 text-emerald-300 text-[10px] font-bold">
+                <span>ঢাকার ভেতরে</span>
+                <span class="block text-white font-black mt-0.5" id="zoneInRate">৳৬০</span>
+              </button>
+              <button type="button" onclick="setDeliveryZone('outside')" id="btnZoneOut" class="p-1.5 rounded-xl border border-slate-700 bg-slate-800 text-slate-400 text-[10px] font-bold">
+                <span>ঢাকার বাইরে</span>
+                <span class="block text-white font-black mt-0.5" id="zoneOutRate">৳১২০</span>
+              </button>
+              <button type="button" onclick="setDeliveryZone('all')" id="btnZoneAll" class="p-1.5 rounded-xl border border-slate-700 bg-slate-800 text-slate-400 text-[10px] font-bold">
+                <span>অল বাংলাদেশ</span>
+                <span class="block text-white font-black mt-0.5" id="zoneAllRate">৳৮০</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Special Order Note -->
+          <div>
+            <label class="block text-[11px] font-bold text-slate-300 mb-1 flex items-center justify-between">
+              <span>অর্ডারের বিশেষ নোট (ঐচ্ছিক):</span>
+              <span class="text-[10px] text-slate-500">কালার, সাইজ ইত্যাদি</span>
+            </label>
+            <textarea id="custOrderNote" rows="2" placeholder="যেমন: কালার কালো দিন, বিকেলে ৫টার পর ডেলিভারি দিন..." class="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded-xl text-white text-xs placeholder:text-slate-500 focus:outline-none focus:border-emerald-500"></textarea>
+          </div>
+
+          <!-- Payment Method -->
+          <div>
+            <label class="block text-[11px] font-bold text-slate-300 mb-1">পেমেন্ট পদ্ধতি:</label>
+            <div class="grid grid-cols-2 gap-2">
+              <button type="button" onclick="setPaymentMethod('COD')" id="btnPayCod" class="p-2 rounded-xl border-2 border-emerald-500 bg-emerald-500/20 text-emerald-300 font-bold text-xs text-center">
+                ক্যাশ অন ডেলিভারি
+              </button>
+              <button type="button" onclick="setPaymentMethod('MFS')" id="btnPayMfs" class="p-2 rounded-xl border-2 border-slate-700 bg-slate-800 text-slate-400 font-bold text-xs text-center">
+                বিকাশ / নগদ
+              </button>
+            </div>
+          </div>
+
+          <!-- MFS Payment Details Box -->
+          <div id="mfsTrxBox" class="hidden p-2.5 bg-pink-500/10 border border-pink-500/30 rounded-xl space-y-1.5">
+            <p class="text-[10px] text-pink-300 font-bold">
+              সেন্ড মানি করার নম্বর: <strong class="text-white font-mono" id="mfsPhoneDisplay">০১৭১০১১৩৯২৫</strong>
+            </p>
+            <input type="tel" id="custMfsPhone" placeholder="প্রেরক মোবাইল নম্বর" class="w-full px-2.5 py-1.5 bg-slate-900 border border-pink-500/40 rounded-lg text-white text-xs" />
+            <input type="text" id="custTrxId" placeholder="TrxID (যেমন: 9J3K8L2M)" class="w-full px-2.5 py-1.5 bg-slate-900 border border-pink-500/40 rounded-lg text-white font-mono text-xs uppercase" />
+          </div>
+
+          <button type="submit" id="btnSubmitOrder" class="w-full py-2.5 sm:py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-black rounded-xl transition text-xs sm:text-sm shadow-md flex items-center justify-center gap-1.5">
+            <span>অর্ডার কনফার্ম করুন</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- B. Product Details Modal -->
+  <div id="customerProductDetailsModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-slate-950/85 backdrop-blur-xs overflow-y-auto">
+    <div class="bg-[#0d1322] border border-slate-700/80 w-full max-w-xl rounded-2xl sm:rounded-3xl p-4 sm:p-5 shadow-2xl max-h-[90vh] flex flex-col text-xs my-auto">
+      <div class="flex items-center justify-between pb-2.5 border-b border-slate-800">
+        <h3 id="custProdModalTitle" class="font-bold text-xs sm:text-sm text-white truncate pr-2">পণ্যের বিবরণ</h3>
+        <button onclick="closeProductDetailsModal()" class="w-7 h-7 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center">
+          <svg class="w-4 h-4"><use href="#icon-x"></use></svg>
+        </button>
+      </div>
+
+      <div id="custProdModalBody" class="my-3 space-y-3 overflow-y-auto flex-1 custom-scrollbar"></div>
+    </div>
+  </div>
+
+  <!-- C. Customer Order Tracking Modal -->
+  <div id="myOrdersModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/85 backdrop-blur-xs">
+    <div class="bg-[#0d1322] border border-slate-700/80 w-full max-w-md rounded-2xl sm:rounded-3xl p-4 sm:p-5 shadow-2xl max-h-[88vh] flex flex-col text-xs">
+      <div class="flex items-center justify-between pb-2.5 border-b border-slate-800">
+        <h3 class="font-bold text-xs sm:text-sm text-white flex items-center gap-2">
+          <svg class="w-4 h-4 text-emerald-400"><use href="#icon-box"></use></svg>
+          <span>আমার অর্ডারসমূহ ও ট্র্যাকিং</span>
+        </h3>
+        <button onclick="document.getElementById('myOrdersModal').classList.add('hidden')" class="w-7 h-7 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center">
+          <svg class="w-4 h-4"><use href="#icon-x"></use></svg>
+        </button>
+      </div>
+      <div id="myOrdersList" class="my-3 space-y-2.5 overflow-y-auto flex-1 custom-scrollbar"></div>
+    </div>
+  </div>
+
+  <!-- D. Wishlist Modal -->
+  <div id="wishlistModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/85 backdrop-blur-xs">
+    <div class="bg-[#0d1322] border border-slate-700/80 w-full max-w-sm rounded-2xl sm:rounded-3xl p-4 sm:p-5 shadow-2xl max-h-[85vh] flex flex-col text-xs">
+      <div class="flex items-center justify-between pb-2.5 border-b border-slate-800">
+        <h3 class="font-bold text-xs sm:text-sm text-white flex items-center gap-2">
+          <svg class="w-4 h-4 text-rose-500"><use href="#icon-heart-fill"></use></svg>
+          <span>পছন্দের তালিকা</span>
+        </h3>
+        <button onclick="document.getElementById('wishlistModal').classList.add('hidden')" class="w-7 h-7 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center">
+          <svg class="w-4 h-4"><use href="#icon-x"></use></svg>
+        </button>
+      </div>
+      <div id="wishlistItemsList" class="my-3 space-y-2 overflow-y-auto flex-1 custom-scrollbar"></div>
+    </div>
+  </div>
+
+  <!-- E. User Profile & UID Management Modal -->
+  <div id="userProfileModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/85 backdrop-blur-xs">
+    <div class="bg-[#0d1322] border border-slate-700/80 w-full max-w-sm rounded-2xl sm:rounded-3xl p-4 sm:p-5 shadow-2xl max-h-[88vh] overflow-y-auto custom-scrollbar text-xs">
+      
+      <div class="flex items-center justify-between pb-2.5 border-b border-slate-800">
+        <h3 class="font-bold text-xs sm:text-sm text-white flex items-center gap-2">
+          <svg class="w-4 h-4 text-emerald-400"><use href="#icon-user"></use></svg>
+          <span>আমার প্রোফাইল ও আইডি</span>
+        </h3>
+        <button onclick="document.getElementById('userProfileModal').classList.add('hidden')" class="w-7 h-7 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center">
+          <svg class="w-4 h-4"><use href="#icon-x"></use></svg>
+        </button>
+      </div>
+
+      <!-- Active User ID Badge & Copy -->
+      <div class="bg-slate-800/80 border border-slate-700/80 rounded-xl p-2.5 my-2.5">
+        <div class="flex items-center justify-between mb-1">
+          <span class="text-[9px] text-emerald-400 font-bold uppercase tracking-wider">ইউজার আইডি (UID)</span>
+          <span class="px-1.5 py-0.5 rounded-full text-[8px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 flex items-center gap-1">
+            <span class="w-1 h-1 rounded-full bg-emerald-400 animate-pulse"></span> ডিভাইস কানেক্টেড
+          </span>
+        </div>
+        <div class="flex items-center justify-between bg-slate-950 px-2.5 py-1.5 rounded-lg border border-slate-800">
+          <span id="displayUserUid" class="font-mono font-bold text-xs text-white truncate">usr_000000</span>
+          <button onclick="copyUidToClipboard()" class="text-slate-400 hover:text-emerald-400 text-xs px-1" title="কপি করুন">
+            <svg class="w-3.5 h-3.5"><use href="#icon-copy"></use></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- User Stat Cards -->
+      <div class="grid grid-cols-2 gap-2 mb-2.5">
+        <div class="bg-slate-800/60 border border-slate-700/80 rounded-xl p-2 text-center">
+          <span class="text-[10px] text-slate-400 block font-medium">আমার অর্ডার</span>
+          <span id="profileOrderCount" class="font-black text-emerald-400 text-xs sm:text-sm">০ টি</span>
+        </div>
+        <div class="bg-slate-800/60 border border-slate-700/80 rounded-xl p-2 text-center">
+          <span class="text-[10px] text-slate-400 block font-medium">কার্ট পণ্য</span>
+          <span id="profileCartCount" class="font-black text-amber-400 text-xs sm:text-sm">০ টি</span>
+        </div>
+      </div>
+
+      <!-- Profile Edit Form -->
+      <form id="profileSaveForm" onsubmit="saveUserProfile(event)" class="space-y-2">
+        <div>
+          <label class="block font-bold text-slate-300 mb-1 text-[11px]">পূর্ণ নাম *</label>
+          <input type="text" id="profNameInput" required placeholder="মোঃ সাব্বির আহমেদ" class="w-full px-2.5 py-1.5 bg-slate-800 border border-slate-700 rounded-xl text-white text-xs focus:outline-none focus:border-emerald-500" />
+        </div>
+        <div>
+          <label class="block font-bold text-slate-300 mb-1 text-[11px]">মোবাইল নম্বর *</label>
+          <input type="tel" id="profPhoneInput" required pattern="01[3-9][0-9]{8}" placeholder="017XXXXXXXX" class="w-full px-2.5 py-1.5 bg-slate-800 border border-slate-700 rounded-xl text-white text-xs focus:outline-none focus:border-emerald-500" />
+        </div>
+        <div>
+          <label class="block font-bold text-slate-300 mb-1 text-[11px]">ইমেইল (ঐচ্ছিক)</label>
+          <input type="email" id="profEmailInput" placeholder="user@gmail.com" class="w-full px-2.5 py-1.5 bg-slate-800 border border-slate-700 rounded-xl text-white text-xs focus:outline-none focus:border-emerald-500" />
+        </div>
+        <div>
+          <label class="block font-bold text-slate-300 mb-1 text-[11px]">ডেলিভারি ঠিকানা</label>
+          <textarea id="profAddressInput" rows="2" placeholder="বাড়ি/রোড, এলাকা, জেলা..." class="w-full px-2.5 py-1.5 bg-slate-800 border border-slate-700 rounded-xl text-white text-xs focus:outline-none focus:border-emerald-500"></textarea>
+        </div>
+        <button type="submit" class="w-full py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl text-xs transition flex items-center justify-center gap-1.5 shadow-sm">
+          <span>সংরক্ষণ করুন</span>
+        </button>
+      </form>
+
+      <!-- Danger Zone -->
+      <div class="mt-3 pt-3 border-t border-slate-800">
+        <div class="flex items-center justify-between mb-1">
+          <span class="font-bold text-rose-400 text-[11px] flex items-center gap-1">
+            বিপদজনক জোন (Danger Zone)
+          </span>
+        </div>
+        <p class="text-[10px] text-slate-400 mb-2 leading-relaxed">
+          প্রোফাইল মুছে ফেললে ডিভাইসের সমস্ত কার্ট ও অর্ডার সংযোগ মুছে নতুন ইউজার আইডি তৈরি হবে।
+        </p>
+
+        <div id="deleteConfirmBox" class="hidden bg-rose-950/40 border border-rose-500/40 rounded-xl p-2.5 space-y-1.5">
+          <p class="text-[10px] font-bold text-rose-300">
+            ⚠️ আপনি কি নিশ্চিত যে প্রোফাইল মুছে নতুন আইডি তৈরি করতে চান?
+          </p>
+          <div class="flex gap-2">
+            <button onclick="executeDeleteProfile()" class="flex-1 py-1 bg-rose-600 hover:bg-rose-500 text-white font-bold rounded-lg text-[10px] transition">
+              হ্যাঁ, ডিলিট করুন
+            </button>
+            <button onclick="document.getElementById('deleteConfirmBox').classList.add('hidden')" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold rounded-lg text-[10px] transition">
+              বাতিল
+            </button>
+          </div>
+        </div>
+
+        <button id="btnShowDeleteConfirm" onclick="document.getElementById('deleteConfirmBox').classList.remove('hidden')" class="w-full py-1.5 bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/30 rounded-xl font-bold text-xs flex items-center justify-center gap-1.5 transition">
+          <svg class="w-3.5 h-3.5 text-rose-400 mr-1"><use href="#icon-trash"></use></svg>
+          <span>প্রোফাইল ও ডেটা ডিলিট করুন</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================================================================= -->
+  <!-- JAVASCRIPT: FIREBASE INTEGRATION & COMPLETE STORE LOGIC -->
+  <!-- ================================================================= -->
+  <script type="module">
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js';
+    import { 
+      getFirestore, 
+      collection, 
+      doc, 
+      onSnapshot, 
+      setDoc,
+      deleteDoc 
+    } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js';
+
+    // Firebase Configuration
+    const firebaseConfig = {
+      projectId: "helical-terra-cpqwl",
+      appId: "1:510394491129:web:37c20d627f2b19e2348228",
+      apiKey: "AIzaSyBENGtl-PuTuB6jql0S4yiaIhj0YQBJpIk",
+      authDomain: "helical-terra-cpqwl.firebaseapp.com",
+      firestoreDatabaseId: "ai-studio-3b60c5f0-cda6-49fb-ae54-1b54b4cfd2b0",
+      storageBucket: "helical-terra-cpqwl.firebasestorage.app",
+      messagingSenderId: "510394491129"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app, firebaseConfig.firestoreDatabaseId);
+
+    // Initial fallback data
+    const FALLBACK_PRODUCTS = [
+      {
+        id: 'prod_1',
+        name: 'প্রিমিয়াম বাসমতি চাল (৫ কেজি)',
+        category: 'groceries',
+        price: 650,
+        originalPrice: 750,
+        rating: 4.9,
+        reviews: 42,
+        badge: 'জনপ্রিয়',
+        inStock: true,
+        image: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80',
+        images: [
+          'https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80',
+          'https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?auto=format&fit=crop&w=600&q=80'
+        ],
+        description: '১০০% খাঁটি ও লম্বা দানার অরিজিনাল বাসমতি চাল। রান্নায় চমৎকার সুবাস ও স্বাদ নিয়ে আসে।'
+      },
+      {
+        id: 'prod_2',
+        name: 'ওয়্যারলেস নয়েজ ক্যানসেলিং হেডফোন',
+        category: 'audio',
+        price: 2450,
+        originalPrice: 3200,
+        rating: 4.8,
+        reviews: 56,
+        badge: 'বেস্ট সেলার',
+        inStock: true,
+        image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80',
+        images: [
+          'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80',
+          'https://images.unsplash.com/photo-1484704849700-f032a568e944?auto=format&fit=crop&w=600&q=80'
+        ],
+        description: 'ডিপ বাস, দীর্ঘ ব্যাটারি ব্যাকআপ ও প্রিমিয়াম বিল্ড কোয়ালিটির ব্লুটুথ হেডফোন।'
+      },
+      {
+        id: 'prod_3',
+        name: 'স্মার্ট ফিটনেস ট্র্যাকার ওয়াচ',
+        category: 'gadgets',
+        price: 1850,
+        originalPrice: 2200,
+        rating: 4.7,
+        reviews: 38,
+        badge: 'ট্রেন্ডিং',
+        inStock: true,
+        image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80',
+        images: [
+          'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80'
+        ],
+        description: 'হার্ট রেট, স্লিপ ট্র্যাকিং, স্টেপ কাউন্টার ও ওয়াটারপ্রুফ বডি সহ আধুনিক স্মার্টওয়াচ।'
+      },
+      {
+        id: 'prod_4',
+        name: 'পিওর সরিষার তেল (১ লিটার)',
+        category: 'groceries',
+        price: 290,
+        originalPrice: 340,
+        rating: 5.0,
+        reviews: 89,
+        badge: 'খাঁটি পণ্য',
+        inStock: true,
+        image: 'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=600&q=80',
+        images: [
+          'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=600&q=80'
+        ],
+        description: 'ঘানিতে ভাঙানো ১০০% খাঁটি ঝাঁঝালো সরিষার তেল। স্বাস্থ্যসম্মত ও পুষ্টিকর।'
+      }
+    ];
+
+    // State Variables
+    let products = [...FALLBACK_PRODUCTS];
+    let cart = [];
+    let wishlist = [];
+    let myOrderIds = [];
+    let selectedUserCat = 'all';
+    let activeAppliedCoupon = null;
+    let selectedDeliveryZone = 'inside';
+    let selectedPaymentMethod = 'COD';
+    let detailedProductObj = null;
+    let activeDetailImgIdx = 0;
+
+    let storeSettings = {
+      storeName: 'সস্তা বাজার',
+      phone: '০১৭১০১১৩৯২৫',
+      address: 'খোকসা, কুষ্টিয়া, রাধানগর',
+      deliveryIn: 60,
+      deliveryOut: 120,
+      deliveryAll: 80,
+      noticeBanner: 'সস্তা বাজারে স্বাগতম! সারা দেশে দ্রুত হোম ডেলিভারি ও বিশেষ ছাড়।',
+      couponCode: 'SASTA2026',
+      couponDiscount: 10
+    };
+
+    // User Profile & Unique Device UID
+    let userProfile = { name: '', phone: '', email: '', address: '' };
+    let deviceUid = '';
+
+    function initUserSession() {
+      try {
+        cart = JSON.parse(localStorage.getItem('sb_cart') || '[]');
+        wishlist = JSON.parse(localStorage.getItem('sb_wishlist') || '[]');
+        myOrderIds = JSON.parse(localStorage.getItem('sb_my_order_ids') || '[]');
+        userProfile = JSON.parse(localStorage.getItem('sb_user_profile') || '{"name":"","phone":"","email":"","address":""}');
+      } catch (e) {}
+
+      let uid = localStorage.getItem('sb_device_uid');
+      if (!uid) {
+        uid = 'usr_' + Math.random().toString(36).slice(2, 9) + Date.now().toString(36).slice(-4);
+        localStorage.setItem('sb_device_uid', uid);
+      }
+      deviceUid = uid;
+
+      const uidEl = document.getElementById('displayUserUid');
+      if (uidEl) uidEl.innerText = deviceUid;
+
+      if (userProfile.name) {
+        const headerName = document.getElementById('headerProfileName');
+        if (headerName) headerName.innerText = userProfile.name.split(' ')[0];
+        const custName = document.getElementById('custName');
+        if (custName) custName.value = userProfile.name;
+        const profName = document.getElementById('profNameInput');
+        if (profName) profName.value = userProfile.name;
+      }
+      if (userProfile.phone) {
+        const custPhone = document.getElementById('custPhone');
+        if (custPhone) custPhone.value = userProfile.phone;
+        const profPhone = document.getElementById('profPhoneInput');
+        if (profPhone) profPhone.value = userProfile.phone;
+      }
+      if (userProfile.email) {
+        const profEmail = document.getElementById('profEmailInput');
+        if (profEmail) profEmail.value = userProfile.email;
+      }
+      if (userProfile.address) {
+        const custAddr = document.getElementById('custAddress');
+        if (custAddr) custAddr.value = userProfile.address;
+        const profAddr = document.getElementById('profAddressInput');
+        if (profAddr) profAddr.value = userProfile.address;
+      }
+
+      updateCartBadge();
+      updateWishlistBadge();
+      updateOrdersBadge();
+    }
+
+    // Toast Notification
+    window.showToast = function(msg, type = 'info') {
+      const box = document.getElementById('toastBox');
+      if (!box) return;
+      const el = document.createElement('div');
+      const bg = type === 'success' ? 'bg-emerald-600' : type === 'error' ? 'bg-rose-600' : 'bg-slate-800';
+      el.className = `p-3 rounded-xl shadow-xl flex items-center gap-2 text-xs font-bold border border-white/15 text-white animate-slideIn ${bg}`;
+      el.innerHTML = `<span>${msg}</span>`;
+      box.appendChild(el);
+      setTimeout(() => el.remove(), 3000);
+    };
+
+    // Realtime Firestore Products Listener
+    onSnapshot(collection(db, 'products'), (snapshot) => {
+      if (!snapshot.empty) {
+        const fetched = [];
+        snapshot.forEach(docSnap => {
+          fetched.push({ id: docSnap.id, ...docSnap.data() });
+        });
+        products = fetched;
+      }
+      renderUserProducts();
+    });
+
+    // Realtime Firestore Settings Listener
+    onSnapshot(doc(db, 'settings', 'store'), (docSnap) => {
+      if (docSnap.exists()) {
+        storeSettings = { ...storeSettings, ...docSnap.data() };
+        if (storeSettings.noticeBanner) {
+          const noticeEl = document.getElementById('noticeText');
+          if (noticeEl) noticeEl.innerText = storeSettings.noticeBanner;
+        }
+        if (storeSettings.couponCode) {
+          const heroCode = document.getElementById('heroCouponCode');
+          if (heroCode) heroCode.innerText = storeSettings.couponCode;
+          const topTag = document.getElementById('topCouponTag');
+          if (topTag) topTag.innerText = storeSettings.couponCode;
+        }
+        if (storeSettings.phone) {
+          const mfsPhone = document.getElementById('mfsPhoneDisplay');
+          if (mfsPhone) mfsPhone.innerText = storeSettings.phone;
+        }
+        const zIn = document.getElementById('zoneInRate');
+        if (zIn) zIn.innerText = `৳${storeSettings.deliveryIn || 60}`;
+        const zOut = document.getElementById('zoneOutRate');
+        if (zOut) zOut.innerText = `৳${storeSettings.deliveryOut || 120}`;
+        const zAll = document.getElementById('zoneAllRate');
+        if (zAll) zAll.innerText = `৳${storeSettings.deliveryAll || 80}`;
+        calculateCartTotal();
+      }
+    });
+
+    // Category Filter Handler
+    window.filterUserCategory = function(cat) {
+      selectedUserCat = cat;
+      document.querySelectorAll('.cat-pill').forEach(el => {
+        if (el.dataset.cat === cat) {
+          el.className = 'cat-pill px-3 py-1.5 rounded-xl bg-emerald-600 text-white transition shrink-0 text-xs';
+        } else {
+          el.className = 'cat-pill px-3 py-1.5 rounded-xl bg-slate-800 text-slate-300 hover:text-white transition shrink-0 text-xs';
+        }
+      });
+      renderUserProducts();
+    };
+
+    window.clearSearch = function() {
+      const inp = document.getElementById('userSearchInput');
+      const inpm = document.getElementById('userSearchInputMobile');
+      if (inp) inp.value = '';
+      if (inpm) inpm.value = '';
+      document.getElementById('clearSearchBtn')?.classList.add('hidden');
+      renderUserProducts();
+    };
+
+    // Render Products Grid
+    window.renderUserProducts = function() {
+      const q = (document.getElementById('userSearchInput')?.value || document.getElementById('userSearchInputMobile')?.value || '').toLowerCase().trim();
+      const clearBtn = document.getElementById('clearSearchBtn');
+      if (clearBtn) {
+        if (q) clearBtn.classList.remove('hidden');
+        else clearBtn.classList.add('hidden');
+      }
+
+      let filtered = products.filter(p => {
+        const matchCat = selectedUserCat === 'all' || p.category === selectedUserCat;
+        const matchSearch = !q || (p.name || '').toLowerCase().includes(q) || (p.description || '').toLowerCase().includes(q);
+        return matchCat && matchSearch;
+      });
+
+      const sort = document.getElementById('sortOption')?.value || 'default';
+      if (sort === 'low-to-high') filtered.sort((a, b) => a.price - b.price);
+      else if (sort === 'high-to-low') filtered.sort((a, b) => b.price - a.price);
+      else if (sort === 'rating') filtered.sort((a, b) => (b.rating || 0) - (a.rating || 0));
+
+      const countText = document.getElementById('userProductsCountText');
+      if (countText) countText.innerText = `${filtered.length}টি পণ্য পাওয়া গেছে`;
+      
+      const grid = document.getElementById('userProductsGrid');
+      if (!grid) return;
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '<div class="col-span-full py-16 text-center text-slate-500 text-xs">কোনো পণ্য পাওয়া যায়নি</div>';
+        return;
+      }
+
+      grid.innerHTML = filtered.map(p => {
+        const isOutOfStock = p.inStock === false;
+        const imgList = (Array.isArray(p.images) && p.images.length > 0) ? p.images : [p.image];
+        const isWishlisted = wishlist.includes(String(p.id));
+
+        return `
+          <div class="bg-[#121929] border border-slate-800/80 rounded-xl sm:rounded-2xl p-2 sm:p-3 flex flex-col justify-between group hover:border-emerald-500/50 transition duration-300 w-full overflow-hidden shadow-sm">
+            <div>
+              <div onclick="viewProductDetails('${p.id}')" class="relative overflow-hidden rounded-lg sm:rounded-xl mb-2 cursor-pointer aspect-square bg-slate-900 flex items-center justify-center">
+                <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 ${isOutOfStock ? 'opacity-60 grayscale' : ''}" loading="lazy" />
+                ${p.badge ? `<span class="absolute top-1.5 left-1.5 px-1.5 py-0.5 rounded-md text-[9px] font-black bg-amber-400 text-slate-950 shadow-xs">${p.badge}</span>` : ''}
+                ${imgList.length > 1 ? `<span class="absolute bottom-1.5 right-1.5 px-1 py-0.5 rounded text-[8px] font-bold bg-slate-900/85 text-white">${imgList.length} টি ছবি</span>` : ''}
+                ${isOutOfStock ? `<span class="absolute inset-0 bg-slate-950/75 flex items-center justify-center text-rose-400 font-black text-xs">স্টক শেষ</span>` : ''}
+                <button onclick="event.stopPropagation(); toggleWishlist('${p.id}')" class="absolute top-1.5 right-1.5 w-6 h-6 bg-slate-900/80 hover:bg-slate-900 rounded-full flex items-center justify-center text-xs shadow-md transition">
+                  <svg class="w-3.5 h-3.5 ${isWishlisted ? 'text-rose-500' : 'text-slate-400'}"><use href="${isWishlisted ? '#icon-heart-fill' : '#icon-heart-outline'}"></use></svg>
+                </button>
+              </div>
+
+              <div class="space-y-1">
+                <div class="flex items-center gap-1 text-amber-400 text-[10px]">
+                  <svg class="w-2.5 h-2.5 text-amber-400"><use href="#icon-star"></use></svg>
+                  <span class="font-bold text-slate-300">${p.rating || 5.0}</span>
+                </div>
+                <h4 onclick="viewProductDetails('${p.id}')" class="font-bold text-xs text-white line-clamp-1 cursor-pointer hover:text-emerald-400 transition" title="${p.name}">${p.name}</h4>
+                <p class="text-[10px] text-slate-400 line-clamp-1">${p.description || ''}</p>
+                <button onclick="viewProductDetails('${p.id}')" class="text-[10px] text-emerald-400 hover:underline font-bold inline-flex items-center gap-0.5">
+                  <span>বিস্তারিত বিবরণ ও ছবি</span>
+                  <svg class="w-2 h-2 text-emerald-400"><use href="#icon-chevron-right"></use></svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="mt-2.5 pt-2 border-t border-slate-800/80">
+              <div class="flex items-baseline justify-between mb-1.5">
+                <span class="font-black text-emerald-400 text-xs sm:text-sm">৳${p.price}</span>
+                ${p.originalPrice && p.originalPrice > p.price ? `<span class="text-[9px] text-slate-400 line-through">৳${p.originalPrice}</span>` : ''}
+              </div>
+
+              <!-- 3 Side-by-Side Clean Action Buttons -->
+              <div class="grid grid-cols-3 gap-1">
+                <button onclick="viewProductDetails('${p.id}')" class="py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg text-[10px] font-bold transition flex items-center justify-center" title="বিস্তারিত">
+                  <svg class="w-3.5 h-3.5 text-slate-300"><use href="#icon-eye"></use></svg>
+                </button>
+
+                ${!isOutOfStock ? `
+                  <button onclick="addToCart('${p.id}')" class="py-1.5 bg-emerald-600/20 hover:bg-emerald-600 text-emerald-300 hover:text-white rounded-lg transition flex items-center justify-center text-xs" title="কার্ট">
+                    <svg class="w-3.5 h-3.5"><use href="#icon-cart"></use></svg>
+                  </button>
+                  <button onclick="directBuyNow('${p.id}')" class="py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-lg text-[10px] transition shadow-xs flex items-center justify-center gap-0.5" title="কিনুন">
+                    <svg class="w-3 h-3 text-amber-300"><use href="#icon-bolt"></use></svg>
+                    <span>কিনুন</span>
+                  </button>
+                ` : `
+                  <span class="col-span-2 py-1.5 bg-slate-800 text-slate-500 text-[9px] font-bold rounded-lg text-center cursor-not-allowed">স্টক শেষ</span>
+                `}
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    };
+
+    // Product Details Modal
+    window.viewProductDetails = function(prodId) {
+      const p = products.find(item => String(item.id) === String(prodId));
+      if (!p) return;
+      detailedProductObj = p;
+      activeDetailImgIdx = 0;
+
+      const titleEl = document.getElementById('custProdModalTitle');
+      if (titleEl) titleEl.innerText = p.name;
+      renderProductDetailsBody();
+      document.getElementById('customerProductDetailsModal')?.classList.remove('hidden');
+    };
+
+    window.closeProductDetailsModal = function() {
+      document.getElementById('customerProductDetailsModal')?.classList.add('hidden');
+    };
+
+    function renderProductDetailsBody() {
+      const p = detailedProductObj;
+      if (!p) return;
+      const imgList = (Array.isArray(p.images) && p.images.length > 0) ? p.images : [p.image];
+      const activeImg = imgList[activeDetailImgIdx] || p.image;
+      const isInStock = p.inStock !== false;
+      const isWishlisted = wishlist.includes(String(p.id));
+
+      const body = document.getElementById('custProdModalBody');
+      if (!body) return;
+
+      body.innerHTML = `
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+          
+          <div class="space-y-2">
+            <div class="relative aspect-square rounded-xl overflow-hidden bg-slate-950 border border-slate-700/80 flex items-center justify-center">
+              <img src="${activeImg}" alt="${p.name}" class="w-full h-full object-cover" />
+              ${p.badge ? `<span class="absolute top-2 left-2 bg-amber-400 text-slate-950 font-black text-[9px] px-2 py-0.5 rounded shadow-sm">${p.badge}</span>` : ''}
+              ${!isInStock ? `<span class="absolute top-2 right-2 bg-rose-600 text-white font-black text-[9px] px-2 py-0.5 rounded shadow-sm">স্টক শেষ</span>` : ''}
+              
+              ${imgList.length > 1 ? `
+                <button onclick="changeDetailImage(-1)" class="absolute left-1.5 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-slate-900/80 hover:bg-slate-900 text-white flex items-center justify-center shadow-md">
+                  <svg class="w-3.5 h-3.5 text-white"><use href="#icon-chevron-left"></use></svg>
+                </button>
+                <button onclick="changeDetailImage(1)" class="absolute right-1.5 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-slate-900/80 hover:bg-slate-900 text-white flex items-center justify-center shadow-md">
+                  <svg class="w-3.5 h-3.5 text-white"><use href="#icon-chevron-right"></use></svg>
+                </button>
+              ` : ''}
+            </div>
+
+            ${imgList.length > 1 ? `
+              <div class="flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar">
+                ${imgList.map((url, idx) => `
+                  <button onclick="setDetailImageIndex(${idx})" class="w-12 h-12 rounded-lg overflow-hidden border-2 shrink-0 transition ${activeDetailImgIdx === idx ? 'border-emerald-500' : 'border-slate-800 opacity-60 hover:opacity-100'}">
+                    <img src="${url}" class="w-full h-full object-cover" />
+                  </button>
+                `).join('')}
+              </div>
+            ` : ''}
+          </div>
+
+          <div class="space-y-2.5 flex flex-col justify-between">
+            <div class="space-y-2">
+              <div class="flex items-center gap-2">
+                <span class="text-amber-400 font-bold text-[11px] flex items-center gap-1 bg-amber-500/10 px-1.5 py-0.5 rounded">
+                  <svg class="w-2.5 h-2.5 text-amber-400"><use href="#icon-star"></use></svg> ${p.rating || 5.0} (${p.reviews || 10} রিভিউ)
+                </span>
+                <span class="text-[11px] font-bold ${isInStock ? 'text-emerald-400' : 'text-rose-400'}">
+                  ${isInStock ? 'স্টকে সহজলভ্য' : 'স্টক শেষ'}
+                </span>
+              </div>
+
+              <h2 class="text-sm sm:text-base font-black text-white leading-snug">${p.name}</h2>
+
+              <div class="flex items-baseline gap-2 p-2 rounded-xl bg-slate-800/80 border border-slate-700/80">
+                <span class="text-xl font-black text-emerald-400">৳${p.price}</span>
+                ${p.originalPrice && p.originalPrice > p.price ? `
+                  <span class="text-xs text-slate-400 line-through">৳${p.originalPrice}</span>
+                  <span class="text-[9px] font-bold text-rose-400 bg-rose-500/20 px-1.5 py-0.5 rounded">৳${p.originalPrice - p.price} ছাড়</span>
+                ` : ''}
+              </div>
+
+              <div class="grid grid-cols-3 gap-1 text-center text-[10px] bg-slate-800/60 p-1.5 rounded-xl border border-slate-700/80">
+                <div>
+                  <span class="text-slate-400 block font-bold">ঢাকার ভেতরে</span>
+                  <span class="font-black text-white">৳${storeSettings.deliveryIn || 60}</span>
+                </div>
+                <div class="border-x border-slate-700/80 px-0.5">
+                  <span class="text-slate-400 block font-bold">ঢাকার বাইরে</span>
+                  <span class="font-black text-white">৳${storeSettings.deliveryOut || 120}</span>
+                </div>
+                <div>
+                  <span class="text-slate-400 block font-bold">অল বাংলাদেশ</span>
+                  <span class="font-black text-emerald-400">৳${storeSettings.deliveryAll || 80}</span>
+                </div>
+              </div>
+
+              <div>
+                <h4 class="font-bold text-[11px] text-slate-200 mb-0.5 flex items-center gap-1">
+                  <span>পণ্যের বিবরণ:</span>
+                </h4>
+                <p class="text-slate-300 text-xs leading-relaxed bg-slate-800/50 p-2.5 rounded-xl border border-slate-700/80 max-h-32 overflow-y-auto custom-scrollbar">
+                  ${p.description || 'খাঁটি মানের আসল পণ্য। দ্রুত ডেলিভারি সুবিধা পেতে এখনি অর্ডার করুন।'}
+                </p>
+              </div>
+            </div>
+
+            <div class="pt-2 border-t border-slate-800 flex items-center gap-1.5">
+              <button onclick="toggleWishlist('${p.id}')" class="w-9 h-9 rounded-xl border flex items-center justify-center text-xs transition ${isWishlisted ? 'border-rose-500 bg-rose-500/20 text-rose-400' : 'border-slate-700 text-slate-400 hover:text-rose-400'}" title="পছন্দের তালিকা">
+                <svg class="w-4 h-4 ${isWishlisted ? 'text-rose-500' : 'text-slate-400'}"><use href="${isWishlisted ? '#icon-heart-fill' : '#icon-heart-outline'}"></use></svg>
+              </button>
+
+              ${isInStock ? `
+                <button onclick="addToCart('${p.id}')" class="flex-1 py-2 bg-slate-800 hover:bg-slate-700 text-emerald-300 font-bold rounded-xl text-xs transition flex items-center justify-center gap-1 border border-emerald-500/40">
+                  <svg class="w-3.5 h-3.5 text-emerald-300"><use href="#icon-cart"></use></svg>
+                  <span>কার্টে যোগ</span>
+                </button>
+                <button onclick="directBuyNow('${p.id}')" class="flex-1 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl text-xs transition flex items-center justify-center gap-1 shadow-sm">
+                  <svg class="w-3.5 h-3.5 text-amber-300"><use href="#icon-bolt"></use></svg>
+                  <span>সরাসরি কিনুন</span>
+                </button>
+              ` : `
+                <div class="flex-1 py-2 bg-slate-800 text-slate-500 font-bold rounded-xl text-xs text-center border border-slate-700">
+                  পণ্যটি বর্তমানে স্টকে নেই
+                </div>
+              `}
+            </div>
+          </div>
+
+        </div>
+      `;
+    }
+
+    window.changeDetailImage = function(delta) {
+      if (!detailedProductObj) return;
+      const imgList = (Array.isArray(detailedProductObj.images) && detailedProductObj.images.length > 0) ? detailedProductObj.images : [detailedProductObj.image];
+      activeDetailImgIdx = (activeDetailImgIdx + delta + imgList.length) % imgList.length;
+      renderProductDetailsBody();
+    };
+
+    window.setDetailImageIndex = function(idx) {
+      activeDetailImgIdx = idx;
+      renderProductDetailsBody();
+    };
+
+    // Wishlist Logic
+    window.toggleWishlist = function(prodId) {
+      const idStr = String(prodId);
+      if (wishlist.includes(idStr)) {
+        wishlist = wishlist.filter(x => x !== idStr);
+        showToast('উইশলিস্ট থেকে সরানো হয়েছে', 'info');
+      } else {
+        wishlist.push(idStr);
+        showToast('পছন্দের তালিকায় যোগ হয়েছে!', 'success');
+      }
+      localStorage.setItem('sb_wishlist', JSON.stringify(wishlist));
+      updateWishlistBadge();
+      renderUserProducts();
+      if (detailedProductObj) renderProductDetailsBody();
+      renderWishlistModal();
+    };
+
+    function updateWishlistBadge() {
+      const count = wishlist.length;
+      const badge = document.getElementById('wishlistBadgeCount');
+      if (badge) {
+        if (count > 0) {
+          badge.innerText = count;
+          badge.classList.remove('hidden');
+        } else {
+          badge.classList.add('hidden');
+        }
+      }
+      const bBadge = document.getElementById('bottomWishlistBadge');
+      if (bBadge) {
+        if (count > 0) {
+          bBadge.innerText = count;
+          bBadge.classList.remove('hidden');
+        } else {
+          bBadge.classList.add('hidden');
+        }
+      }
+    }
+
+    window.openWishlistModal = function() {
+      renderWishlistModal();
+      document.getElementById('wishlistModal')?.classList.remove('hidden');
+    };
+
+    function renderWishlistModal() {
+      const list = document.getElementById('wishlistItemsList');
+      if (!list) return;
+      const wishProds = products.filter(p => wishlist.includes(String(p.id)));
+
+      if (wishProds.length === 0) {
+        list.innerHTML = `
+          <div class="py-10 text-center text-slate-400">
+            <svg class="w-8 h-8 text-slate-600 mx-auto mb-1.5"><use href="#icon-heart-outline"></use></svg>
+            <p class="font-bold text-xs">আপনার পছন্দের তালিকা খালি</p>
+          </div>
+        `;
+        return;
+      }
+
+      list.innerHTML = wishProds.map(p => `
+        <div class="flex items-center gap-2.5 p-2 bg-slate-800/80 rounded-xl border border-slate-700/80">
+          <img src="${p.image}" class="w-10 h-10 object-cover rounded-lg shrink-0" />
+          <div class="flex-1 min-w-0">
+            <p class="font-bold text-white text-xs truncate">${p.name}</p>
+            <p class="text-emerald-400 font-bold text-xs">৳${p.price}</p>
+          </div>
+          <button onclick="addToCart('${p.id}'); toggleWishlist('${p.id}')" class="px-2 py-1 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-xs font-bold transition flex items-center gap-1">
+            <svg class="w-3.5 h-3.5 text-white"><use href="#icon-cart"></use></svg>
+          </button>
+        </div>
+      `).join('');
+    }
+
+    // Cart Operations
+    window.addToCart = function(prodId) {
+      const p = products.find(item => String(item.id) === String(prodId));
+      if (!p) return;
+      if (p.inStock === false) {
+        showToast(`${p.name} বর্তমানে স্টকে নেই!`, 'error');
+        return;
+      }
+
+      const existing = cart.find(item => String(item.id) === String(p.id));
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({ ...p, quantity: 1 });
+      }
+
+      localStorage.setItem('sb_cart', JSON.stringify(cart));
+      updateCartBadge();
+      showToast(`${p.name} কার্টে যোগ হয়েছে!`, 'success');
+    };
+
+    window.directBuyNow = function(prodId) {
+      addToCart(prodId);
+      closeProductDetailsModal();
+      openCartDrawer();
+    };
+
+    function updateCartBadge() {
+      const totalCount = cart.reduce((sum, it) => sum + (it.quantity || 1), 0);
+      const topBadge = document.getElementById('cartBadgeCount');
+      if (topBadge) topBadge.innerText = totalCount;
+      const bottomBadge = document.getElementById('bottomCartBadge');
+      if (bottomBadge) {
+        if (totalCount > 0) {
+          bottomBadge.innerText = totalCount;
+          bottomBadge.classList.remove('hidden');
+        } else {
+          bottomBadge.classList.add('hidden');
+        }
+      }
+      const profCount = document.getElementById('profileCartCount');
+      if (profCount) profCount.innerText = `${totalCount} টি`;
+    }
+
+    window.openCartDrawer = function() {
+      renderCartDrawerItems();
+      calculateCartTotal();
+      document.getElementById('cartDrawer')?.classList.remove('hidden');
+    };
+
+    window.closeCartDrawer = function() {
+      document.getElementById('cartDrawer')?.classList.add('hidden');
+    };
+
+    function renderCartDrawerItems() {
+      const container = document.getElementById('cartItemsContainer');
+      const checkoutSec = document.getElementById('checkoutSection');
+      if (!container || !checkoutSec) return;
+
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div class="py-14 text-center text-slate-400">
+            <svg class="w-10 h-10 text-slate-700 mx-auto mb-2"><use href="#icon-basket"></use></svg>
+            <p class="font-bold text-white text-xs">আপনার কার্ট খালি!</p>
+            <p class="text-[11px] text-slate-400 mt-1">পছন্দের পণ্য কার্টে যোগ করে অর্ডার করুন।</p>
+          </div>
+        `;
+        checkoutSec.classList.add('hidden');
+        return;
+      }
+
+      checkoutSec.classList.remove('hidden');
+      container.innerHTML = cart.map((item, idx) => `
+        <div class="flex items-center gap-2.5 p-2 bg-slate-800/80 rounded-xl border border-slate-700/80">
+          <img src="${item.image}" alt="${item.name}" class="w-11 h-11 object-cover rounded-lg bg-slate-900 shrink-0" />
+          <div class="flex-1 min-w-0">
+            <h4 class="font-bold text-xs text-white truncate">${item.name}</h4>
+            <div class="text-xs font-black text-emerald-400">৳${item.price}</div>
+            <div class="flex items-center gap-1.5 mt-1 bg-slate-900 w-max rounded p-0.5 border border-slate-700">
+              <button onclick="changeCartQty(${idx}, -1)" class="w-4 h-4 flex items-center justify-center font-bold text-slate-300 hover:text-white text-xs">-</button>
+              <span class="text-[11px] font-bold w-3 text-center text-white">${item.quantity}</span>
+              <button onclick="changeCartQty(${idx}, 1)" class="w-4 h-4 flex items-center justify-center font-bold text-slate-300 hover:text-white text-xs">+</button>
+            </div>
+          </div>
+          <button onclick="removeCartItem(${idx})" class="text-slate-400 hover:text-rose-400 p-1">
+            <svg class="w-4 h-4 text-slate-400 hover:text-rose-400"><use href="#icon-trash"></use></svg>
+          </button>
+        </div>
+      `).join('');
+    }
+
+    window.changeCartQty = function(idx, delta) {
+      if (!cart[idx]) return;
+      cart[idx].quantity += delta;
+      if (cart[idx].quantity <= 0) {
+        cart.splice(idx, 1);
+      }
+      localStorage.setItem('sb_cart', JSON.stringify(cart));
+      updateCartBadge();
+      renderCartDrawerItems();
+      calculateCartTotal();
+    };
+
+    window.removeCartItem = function(idx) {
+      cart.splice(idx, 1);
+      localStorage.setItem('sb_cart', JSON.stringify(cart));
+      updateCartBadge();
+      renderCartDrawerItems();
+      calculateCartTotal();
+      showToast('পণ্যটি সরানো হয়েছে', 'info');
+    };
+
+    // Delivery Zone & Price Calculation
+    window.setDeliveryZone = function(zone) {
+      selectedDeliveryZone = zone;
+      const btnIn = document.getElementById('btnZoneIn');
+      const btnOut = document.getElementById('btnZoneOut');
+      const btnAll = document.getElementById('btnZoneAll');
+
+      const activeClass = 'p-1.5 rounded-xl border border-emerald-500 bg-emerald-500/20 text-emerald-300 text-[10px] font-bold';
+      const inactiveClass = 'p-1.5 rounded-xl border border-slate-700 bg-slate-800 text-slate-400 text-[10px] font-bold';
+
+      if (btnIn) btnIn.className = zone === 'inside' ? activeClass : inactiveClass;
+      if (btnOut) btnOut.className = zone === 'outside' ? activeClass : inactiveClass;
+      if (btnAll) btnAll.className = zone === 'all' ? activeClass : inactiveClass;
+
+      calculateCartTotal();
+    };
+
+    window.setPaymentMethod = function(method) {
+      selectedPaymentMethod = method;
+      const btnCod = document.getElementById('btnPayCod');
+      const btnMfs = document.getElementById('btnPayMfs');
+      const mfsBox = document.getElementById('mfsTrxBox');
+
+      if (method === 'COD') {
+        if (btnCod) btnCod.className = 'p-2 rounded-xl border-2 border-emerald-500 bg-emerald-500/20 text-emerald-300 font-bold text-xs text-center';
+        if (btnMfs) btnMfs.className = 'p-2 rounded-xl border-2 border-slate-700 bg-slate-800 text-slate-400 font-bold text-xs text-center';
+        mfsBox?.classList.add('hidden');
+      } else {
+        if (btnCod) btnCod.className = 'p-2 rounded-xl border-2 border-slate-700 bg-slate-800 text-slate-400 font-bold text-xs text-center';
+        if (btnMfs) btnMfs.className = 'p-2 rounded-xl border-2 border-pink-500 bg-pink-500/20 text-pink-300 font-bold text-xs text-center';
+        mfsBox?.classList.remove('hidden');
+      }
+    };
+
+    function calculateCartTotal() {
+      const subtotal = cart.reduce((sum, item) => sum + (Number(item.price) * Number(item.quantity)), 0);
+      const fee = selectedDeliveryZone === 'inside' 
+        ? (storeSettings.deliveryIn || 60) 
+        : selectedDeliveryZone === 'outside' 
+        ? (storeSettings.deliveryOut || 120) 
+        : (storeSettings.deliveryAll || 80);
+
+      const discountAmount = activeAppliedCoupon && subtotal > 0
+        ? Math.round((subtotal * (storeSettings.couponDiscount || 10)) / 100)
+        : 0;
+
+      const grandTotal = subtotal > 0 ? (subtotal + fee - discountAmount) : 0;
+
+      const subEl = document.getElementById('cartSubtotal');
+      if (subEl) subEl.innerText = `৳${subtotal}`;
+      const feeEl = document.getElementById('cartDeliveryFeeDisplay');
+      if (feeEl) feeEl.innerText = `৳${fee}`;
+      
+      const discRow = document.getElementById('cartDiscountRow');
+      const discEl = document.getElementById('cartDiscountDisplay');
+      if (discountAmount > 0) {
+        if (discEl) discEl.innerText = `-৳${discountAmount}`;
+        discRow?.classList.remove('hidden');
+      } else {
+        discRow?.classList.add('hidden');
+      }
+
+      const grandEl = document.getElementById('cartGrandTotal');
+      if (grandEl) grandEl.innerText = `৳${grandTotal}`;
+      return { subtotal, fee, discountAmount, grandTotal };
+    }
+
+    // Coupon Logic
+    window.applyHeroCoupon = function() {
+      const code = storeSettings.couponCode || 'SASTA2026';
+      activeAppliedCoupon = code.toUpperCase();
+      const badgeText = document.getElementById('appliedCouponText');
+      if (badgeText) badgeText.innerText = `${activeAppliedCoupon} (${storeSettings.couponDiscount || 10}% ছাড়)`;
+      document.getElementById('appliedCouponBadge')?.classList.remove('hidden');
+      document.getElementById('couponInputRow')?.classList.add('hidden');
+      calculateCartTotal();
+      showToast(`${storeSettings.couponDiscount || 10}% কুপন ডিসকাউন্ট যোগ হয়েছে!`, 'success');
+    };
+
+    window.applyCouponFromInput = function() {
+      const val = (document.getElementById('couponInput')?.value || '').trim().toUpperCase();
+      const valid = (storeSettings.couponCode || 'SASTA2026').toUpperCase();
+      if (val === valid) {
+        activeAppliedCoupon = val;
+        const badgeText = document.getElementById('appliedCouponText');
+        if (badgeText) badgeText.innerText = `${activeAppliedCoupon} (${storeSettings.couponDiscount || 10}% ছাড়)`;
+        document.getElementById('appliedCouponBadge')?.classList.remove('hidden');
+        document.getElementById('couponInputRow')?.classList.add('hidden');
+        calculateCartTotal();
+        showToast(`${storeSettings.couponDiscount || 10}% কুপন ডিসকাউন্ট যোগ হয়েছে!`, 'success');
+      } else {
+        showToast('ভুল কুপন কোড!', 'error');
+      }
+    };
+
+    window.removeCoupon = function() {
+      activeAppliedCoupon = null;
+      document.getElementById('appliedCouponBadge')?.classList.add('hidden');
+      document.getElementById('couponInputRow')?.classList.remove('hidden');
+      const inp = document.getElementById('couponInput');
+      if (inp) inp.value = '';
+      calculateCartTotal();
+      showToast('কুপন বাদ দেওয়া হয়েছে', 'info');
+    };
+
+    // Place Order to Firestore
+    window.handlePlaceOrder = async function(e) {
+      e.preventDefault();
+      if (cart.length === 0) {
+        showToast('আপনার কার্ট খালি!', 'error');
+        return;
+      }
+
+      const name = document.getElementById('custName')?.value.trim();
+      const phone = document.getElementById('custPhone')?.value.trim();
+      const address = document.getElementById('custAddress')?.value.trim();
+      const orderNote = document.getElementById('custOrderNote')?.value.trim() || '';
+      const mfsPhone = document.getElementById('custMfsPhone')?.value.trim() || '';
+      const mfsTrx = document.getElementById('custTrxId')?.value.trim() || '';
+
+      if (!name || !phone || !address) {
+        showToast('অনুগ্রহ করে নাম, মোবাইল নম্বর ও ঠিকানা দিন', 'error');
+        return;
+      }
+
+      if (selectedPaymentMethod === 'MFS' && (!mfsPhone || !mfsTrx)) {
+        showToast('বিকাশ/নগদ নম্বর ও TrxID দিন', 'error');
+        return;
+      }
+
+      const submitBtn = document.getElementById('btnSubmitOrder');
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span>প্রসেস হচ্ছে...</span>';
+      }
+
+      try {
+        const { subtotal, fee, discountAmount, grandTotal } = calculateCartTotal();
+        const orderId = 'ORD-' + Math.random().toString(36).substring(2, 7).toUpperCase();
+
+        const orderData = {
+          id: orderId,
+          date: new Date().toLocaleDateString('bn-BD', { year: 'numeric', month: 'long', day: 'numeric' }),
+          amount: `৳${grandTotal}`,
+          numericTotal: grandTotal,
+          items: cart.map(it => ({
+            id: String(it.id),
+            name: it.name,
+            price: Number(it.price),
+            image: it.image,
+            quantity: Number(it.quantity)
+          })),
+          status: 'পেন্ডিং',
+          method: selectedPaymentMethod === 'COD' ? 'ক্যাশ অন ডেলিভারি' : 'বিকাশ/নগদ',
+          customerName: name,
+          customerPhone: phone,
+          customerAddress: address,
+          customerEmail: userProfile.email || '',
+          userId: deviceUid,
+          orderNote: orderNote,
+          deliveryArea: selectedDeliveryZone === 'inside' ? 'ঢাকার ভেতরে' : selectedDeliveryZone === 'outside' ? 'ঢাকার বাইরে' : 'সমগ্র বাংলাদেশ (অল)',
+          deliveryFee: fee,
+          couponCode: activeAppliedCoupon || '',
+          couponDiscount: discountAmount,
+          mfsPhone: mfsPhone,
+          mfsTrx: mfsTrx,
+          createdAt: new Date().toISOString()
+        };
+
+        // Save order directly into Firestore
+        await setDoc(doc(db, 'orders', orderId), orderData);
+
+        // Auto save user profile if not saved
+        if (!userProfile.name) {
+          userProfile = { name, phone, email: userProfile.email || '', address };
+          localStorage.setItem('sb_user_profile', JSON.stringify(userProfile));
+        }
+
+        // Store ID into device my_order_ids
+        myOrderIds.unshift(orderId);
+        localStorage.setItem('sb_my_order_ids', JSON.stringify(myOrderIds));
+
+        // Confetti Celebration
+        try {
+          confetti({
+            particleCount: 120,
+            spread: 100,
+            origin: { y: 0.6 }
+          });
+        } catch (err) {}
+
+        // Reset cart
+        cart = [];
+        localStorage.removeItem('sb_cart');
+        updateCartBadge();
+        updateOrdersBadge();
+
+        closeCartDrawer();
+        showToast(`অর্ডার সফল হয়েছে! #${orderId}`, 'success');
+
+        setTimeout(() => {
+          openMyOrdersModal();
+        }, 500);
+
+      } catch (err) {
+        console.error('Order placement error:', err);
+        showToast('অর্ডারে সাময়িক সমস্যা হয়েছে!', 'error');
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<span>অর্ডার কনফার্ম করুন</span>';
+        }
+      }
+    };
+
+    // My Orders Modal & Live Tracking
+    window.openMyOrdersModal = function() {
+      renderMyOrdersList();
+      document.getElementById('myOrdersModal')?.classList.remove('hidden');
+    };
+
+    function updateOrdersBadge() {
+      const count = myOrderIds.length;
+      const badge = document.getElementById('ordersBadgeCount');
+      if (badge) {
+        if (count > 0) {
+          badge.innerText = count;
+          badge.classList.remove('hidden');
+        } else {
+          badge.classList.add('hidden');
+        }
+      }
+      const bottomBadge = document.getElementById('bottomOrdersBadge');
+      if (bottomBadge) {
+        if (count > 0) {
+          bottomBadge.innerText = count;
+          bottomBadge.classList.remove('hidden');
+        } else {
+          bottomBadge.classList.add('hidden');
+        }
+      }
+      const profOrders = document.getElementById('profileOrderCount');
+      if (profOrders) profOrders.innerText = `${count} টি`;
+    }
+
+    async function renderMyOrdersList() {
+      const container = document.getElementById('myOrdersList');
+      if (!container) return;
+
+      if (myOrderIds.length === 0) {
+        container.innerHTML = `
+          <div class="py-12 text-center text-slate-400">
+            <svg class="w-8 h-8 text-slate-600 mx-auto mb-1.5"><use href="#icon-box"></use></svg>
+            <p class="font-bold text-white text-xs">আপনার কোনো অর্ডার নেই</p>
+            <p class="text-[10px] text-slate-400 mt-1">পণ্য অর্ডার করলে এখানে লাইভ স্ট্যাটাস দেখতে পাবেন।</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = `
+        <div class="text-center py-6 text-slate-500">
+          <div class="w-6 h-6 border-2 border-emerald-500 border-t-transparent rounded-full animate-spin mx-auto mb-1.5"></div>
+          <p class="text-[10px]">অর্ডার লোড হচ্ছে...</p>
+        </div>
+      `;
+
+      onSnapshot(collection(db, 'orders'), (snap) => {
+        const fetched = [];
+        snap.forEach(d => {
+          const ord = { id: d.id, ...d.data() };
+          if (myOrderIds.includes(ord.id) || ord.userId === deviceUid || (userProfile.phone && ord.customerPhone === userProfile.phone)) {
+            fetched.push(ord);
+          }
+        });
+
+        if (fetched.length === 0) {
+          container.innerHTML = '<div class="py-8 text-center text-slate-400 text-xs">কোনো অর্ডার পাওয়া যায়নি</div>';
+          return;
+        }
+
+        container.innerHTML = fetched.map(o => {
+          const status = String(o.status || 'পেন্ডিং');
+          const badgeClass = status.includes('ডেলিভার')
+            ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
+            : status.includes('কনফার্ম')
+            ? 'bg-blue-500/20 text-blue-300 border border-blue-500/40'
+            : status.includes('শিপ')
+            ? 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/40'
+            : status.includes('বাতিল')
+            ? 'bg-rose-500/20 text-rose-300 border border-rose-500/40'
+            : 'bg-amber-500/20 text-amber-300 border border-amber-500/40';
+
+          return `
+            <div class="bg-slate-800/90 border border-slate-700/80 rounded-xl p-3 space-y-2">
+              <div class="flex justify-between items-start pb-1.5 border-b border-slate-700/70">
+                <div>
+                  <span class="text-[9px] text-slate-400 block">${o.date || ''}</span>
+                  <span class="font-black text-emerald-400 text-xs">অর্ডার #${o.id}</span>
+                </div>
+                <span class="px-2 py-0.5 rounded-full font-bold text-[9px] ${badgeClass}">${status}</span>
+              </div>
+
+              <div class="space-y-1">
+                ${(o.items || []).map(it => `
+                  <div class="flex items-center gap-2 text-xs">
+                    <img src="${it.image}" class="w-6 h-6 object-cover rounded bg-slate-900 shrink-0" />
+                    <span class="flex-1 truncate font-medium text-slate-200 text-[11px]">${it.name}</span>
+                    <span class="font-bold text-white text-[11px]">${it.quantity}x</span>
+                  </div>
+                `).join('')}
+              </div>
+
+              ${o.orderNote ? `
+                <div class="text-[10px] text-slate-400 bg-slate-900/60 p-1.5 rounded-lg border border-slate-800">
+                  <span class="font-bold text-slate-300">নোট:</span> ${o.orderNote}
+                </div>
+              ` : ''}
+
+              <div class="flex justify-between items-center pt-1.5 border-t border-slate-700/70 text-xs">
+                <span class="text-slate-400 font-medium text-[11px]">${o.method || 'ক্যাশ অন ডেলিভারি'}</span>
+                <span class="font-black text-white">${o.amount}</span>
+              </div>
+            </div>
+          `;
+        }).join('');
+      });
+    }
+
+    // User Profile Modal Logic
+    window.openProfileModal = function() {
+      const uidEl = document.getElementById('displayUserUid');
+      if (uidEl) uidEl.innerText = deviceUid;
+      const pName = document.getElementById('profNameInput');
+      if (pName) pName.value = userProfile.name || '';
+      const pPhone = document.getElementById('profPhoneInput');
+      if (pPhone) pPhone.value = userProfile.phone || '';
+      const pEmail = document.getElementById('profEmailInput');
+      if (pEmail) pEmail.value = userProfile.email || '';
+      const pAddr = document.getElementById('profAddressInput');
+      if (pAddr) pAddr.value = userProfile.address || '';
+      document.getElementById('deleteConfirmBox')?.classList.add('hidden');
+      document.getElementById('userProfileModal')?.classList.remove('hidden');
+    };
+
+    window.copyUidToClipboard = function() {
+      navigator.clipboard?.writeText(deviceUid);
+      showToast('ইউজার আইডি কপি হয়েছে!', 'info');
+    };
+
+    window.saveUserProfile = async function(e) {
+      e.preventDefault();
+      const name = document.getElementById('profNameInput')?.value.trim();
+      const phone = document.getElementById('profPhoneInput')?.value.trim();
+      const email = document.getElementById('profEmailInput')?.value.trim() || '';
+      const address = document.getElementById('profAddressInput')?.value.trim() || '';
+
+      if (!name || !phone) {
+        showToast('নাম এবং মোবাইল নম্বর দিন!', 'error');
+        return;
+      }
+
+      userProfile = { name, phone, email, address };
+      localStorage.setItem('sb_user_profile', JSON.stringify(userProfile));
+
+      const hName = document.getElementById('headerProfileName');
+      if (hName) hName.innerText = name.split(' ')[0];
+      const cName = document.getElementById('custName');
+      if (cName) cName.value = name;
+      const cPhone = document.getElementById('custPhone');
+      if (cPhone) cPhone.value = phone;
+      const cAddr = document.getElementById('custAddress');
+      if (cAddr) cAddr.value = address;
+
+      if (email) {
+        try {
+          await setDoc(doc(db, 'users', email), { ...userProfile, userId: deviceUid, updatedAt: new Date().toISOString() });
+        } catch (err) {}
+      }
+
+      showToast('প্রোফাইল সংরক্ষিত হয়েছে!', 'success');
+      document.getElementById('userProfileModal')?.classList.add('hidden');
+    };
+
+    window.executeDeleteProfile = async function() {
+      try {
+        if (userProfile.email) {
+          try { await deleteDoc(doc(db, 'users', userProfile.email)); } catch (err) {}
+        }
+
+        cart = [];
+        wishlist = [];
+        myOrderIds = [];
+        userProfile = { name: '', phone: '', email: '', address: '' };
+
+        localStorage.removeItem('sb_cart');
+        localStorage.removeItem('sb_wishlist');
+        localStorage.removeItem('sb_my_order_ids');
+        localStorage.removeItem('sb_user_profile');
+
+        const newUid = 'usr_' + Math.random().toString(36).slice(2, 9) + Date.now().toString(36).slice(-4);
+        deviceUid = newUid;
+        localStorage.setItem('sb_device_uid', newUid);
+
+        initUserSession();
+        document.getElementById('userProfileModal')?.classList.add('hidden');
+        showToast('প্রোফাইল ও ডেটা ডিলিট হয়েছে! নতুন আইডি তৈরি হয়েছে।', 'success');
+      } catch (err) {
+        console.error(err);
+        showToast('প্রোফাইল ডিলিট করতে সমস্যা হয়েছে', 'error');
+      }
+    };
+
+    // Initialize session on load
+    initUserSession();
+  </script>
+</body>
+</html>
